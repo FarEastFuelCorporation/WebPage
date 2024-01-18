@@ -1,0 +1,43 @@
+<!-- views/includes/scripts.ejs -->
+
+<script>
+        function getCurrentRoute() {
+        const fullPath = window.location.pathname;
+        const parts = fullPath.split('/');
+
+        // Get the first part of the route (after removing the leading slash)
+        let baseRoute = parts[1] || '';
+
+        // Remove the hash if it exists
+        if (baseRoute.includes('#')) {
+            baseRoute = baseRoute.split('#')[0];
+        }
+        return `/${baseRoute}`;
+    }
+
+    // Function to update the "active" class based on the current route
+    function updateActiveClass() {
+        const currentRoute = getCurrentRoute();
+
+        // Remove the "active" class from all links
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Add the "active" class to the link with a matching route
+        const activeLink = document.getElementById(currentRoute);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
+
+    // Add click event listeners to all sidebar links
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        if(link){
+            link.addEventListener('click', updateActiveClass);
+        }
+    });
+
+    // Update the "active" class on page load
+    window.addEventListener('load', updateActiveClass);
+</script>

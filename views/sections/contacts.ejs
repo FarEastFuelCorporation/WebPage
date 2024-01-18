@@ -1,0 +1,75 @@
+<!-- views/sections/contacts.ejs -->
+
+<%- include('../includes/head.ejs') %>
+
+<%- include('../includes/head.ejs') %>
+
+<body>
+    <!-- Navigation Bar -->
+    <%- include('../includes/navbar.ejs') %>
+
+    <!-- Page Content -->
+    <section>
+        <div class="container mt-5">
+            <div class="row pt-3">
+                <div class="col-6 ps-0">
+                    <div id="map" style="height: 400px;"></div>
+                </div>
+                <div class="col-3 card-body">
+                    <div class="card p-3" style="height: 400px;">
+                        <h5 class="card-title">INQUIRE ONLINE</h5>
+                        <p class="card-text">
+                            <form action="">
+                                <input type="text" class="form-control mb-3" placeholder="Company Name" required>
+                                <input type="text" class="form-control mb-3" placeholder="Address" required>
+                                <input type="text" class="form-control mb-3" placeholder="Contact Person" required>
+                                <input type="text" class="form-control mb-3" placeholder="Contact Number" required>
+                                <input type="text" class="form-control mb-3" placeholder="Email address" required>
+                                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../includes/footer.ejs') %>
+    <script>
+        function initMap() {
+            // Set a static default location
+            const defaultLocation = { lat: 15.100676369593167, lng: 120.95123625210036 };
+    
+            // Initialize the map
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: defaultLocation,
+                zoom: 8,
+            });
+    
+            // Add a company marker with red color
+            const companyLocation = defaultLocation;
+            const companyMarker = new google.maps.Marker({
+                position: companyLocation,
+                map: map,
+                label: '0', // Label for the marker
+                title: 'FAR EAST FUEL CORPORATION',
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: 'red',
+                    fillOpacity: 1,
+                    strokeWeight: 0,
+                    scale: 10,
+                },
+            });
+    
+            // Create an InfoWindow for the company marker
+            const companyWindow = new google.maps.InfoWindow({
+                content: 'FAR EAST FUEL CORPORATION', // Content inside the InfoWindow
+            });
+        }
+        window.onload = initMap;
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap" async defer></script>
+    <%- include('../includes/scripts.ejs') %>
+</body>
+</html>
