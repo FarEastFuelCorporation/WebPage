@@ -23,7 +23,11 @@ app.get('/sitemap.xml', (req, res) => {
     // Define the URLs to be included in the sitemap
     const urls = [
         { url: '/', changefreq: 'weekly', priority: 1.0 },
-        // Add more URLs as needed
+        { url: '/about', changefreq: 'monthly', priority: 0.8 },
+        { url: '/facilities', changefreq: 'monthly', priority: 0.8 },
+        { url: '/services', changefreq: 'monthly', priority: 0.8 },
+        { url: '/permits', changefreq: 'monthly', priority: 0.8 },
+        { url: '/contacts', changefreq: 'monthly', priority: 0.8 },
     ];
 
     // Create a sitemap stream
