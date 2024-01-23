@@ -39,7 +39,8 @@
         function initMap() {
             // Set a static default location
             const defaultLocation = { lat: 15.100676369593167, lng: 120.95123625210036 };
-    
+            const satelliteOfficeLocation = { lat: 14.704859968437365, lng: 120.98904600992707 };
+            
             // Initialize the map
             const map = new google.maps.Map(document.getElementById('map'), {
                 center: defaultLocation,
@@ -51,7 +52,7 @@
             const companyMarker = new google.maps.Marker({
                 position: companyLocation,
                 map: map,
-                label: '0', // Label for the marker
+                label: 'A', // Label for the marker
                 title: 'FAR EAST FUEL CORPORATION',
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
@@ -64,8 +65,31 @@
     
             // Create an InfoWindow for the company marker
             const companyWindow = new google.maps.InfoWindow({
-                content: 'FAR EAST FUEL CORPORATION', // Content inside the InfoWindow
+                content: 'FAR EAST FUEL CORPORATION - MAIN OFFICE', // Content inside the InfoWindow
             });
+    
+            // Add a company marker with red color
+            const satelliteOfficeMarker = new google.maps.Marker({
+                position: satelliteOfficeLocation,
+                map: map,
+                label: 'B', // Label for the marker
+                title: 'FAR EAST FUEL CORPORATION - MAIN OFFICE',
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: 'red',
+                    fillOpacity: 1,
+                    strokeWeight: 0,
+                    scale: 10,
+                },
+            });
+    
+            // Create an InfoWindow for the company marker
+            const satelliteOfficeWindow = new google.maps.InfoWindow({
+                content: 'FAR EAST FUEL CORPORATION - SATELLITE OFFICE', // Content inside the InfoWindow
+            });
+
+            companyWindow.open(map, companyMarker);
+            satelliteOfficeWindow.open(map, satelliteOfficeMarker);
         }
         window.onload = initMap;
     </script>
