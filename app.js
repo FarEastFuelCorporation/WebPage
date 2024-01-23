@@ -48,6 +48,13 @@ app.get('/sitemap.xml', (req, res) => {
     });
 });
 
+app.get('/robots.txt', (req, res) => {
+    const robotsTxtContent = 'User-agent: *\nDisallow: /private/';
+
+    res.type('text/plain');
+    res.send(robotsTxtContent);
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
