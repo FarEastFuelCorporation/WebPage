@@ -2,32 +2,39 @@
 
 <%- include('../includes/head.ejs') %>
 
-<%- include('../includes/head.ejs') %>
-
 <body>
     <!-- Navigation Bar -->
     <%- include('../includes/navbar.ejs') %>
 
     <!-- Page Content -->
     <section>
-        <div class="container mt-5">
-            <div class="row pt-3">
-                <div class="col-12 col-md-6 ps-0">
-                    <div id="map" style="height: 400px;"></div>
-                </div>
-                <div class="col-12 col-md-6 card-body">
-                    <div class="card p-3" style="height: 400px;">
-                        <h5 class="card-title">INQUIRE ONLINE</h5>
-                        <p class="card-text">
-                            <form action="">
-                                <input type="text" class="form-control mb-3" placeholder="Company Name" required>
-                                <input type="text" class="form-control mb-3" placeholder="Address" required>
-                                <input type="text" class="form-control mb-3" placeholder="Contact Person" required>
-                                <input type="text" class="form-control mb-3" placeholder="Contact Number" required>
-                                <input type="text" class="form-control mb-3" placeholder="Email address" required>
-                                <button type="submit" class="btn btn-primary float-right">Submit</button>
-                            </form>
-                        </p>
+        <div class="container mt-5 pt-3">
+            <div class="card p-3">
+                <h3 class="card-title">CONTACT US</h3>        
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="card" style="height: 400px;">
+                            <div class="card-body">
+                                <div id="map" style="height: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="card" style="height: 400px;">
+                            <div class="card-body">
+                                <h5 class="card-title">INQUIRE ONLINE</h5>
+                                <p class="card-text">
+                                    <form action="">
+                                        <input type="text" class="form-control mb-3" placeholder="Company Name" required>
+                                        <input type="text" class="form-control mb-3" placeholder="Address" required>
+                                        <input type="text" class="form-control mb-3" placeholder="Contact Person" required>
+                                        <input type="text" class="form-control mb-3" placeholder="Contact Number" required>
+                                        <input type="text" class="form-control mb-3" placeholder="Email address" required>
+                                        <button type="submit" class="btn btn-primary float-right">Submit</button>
+                                    </form>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -53,7 +60,7 @@
                 position: companyLocation,
                 map: map,
                 label: 'A', // Label for the marker
-                title: 'FAR EAST FUEL CORPORATION',
+                title: 'MAIN OFFICE',
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     fillColor: 'red',
@@ -65,7 +72,7 @@
     
             // Create an InfoWindow for the company marker
             const companyWindow = new google.maps.InfoWindow({
-                content: 'FAR EAST FUEL CORPORATION - MAIN OFFICE', // Content inside the InfoWindow
+                content: 'MAIN OFFICE', // Content inside the InfoWindow
             });
     
             // Add a company marker with red color
@@ -73,7 +80,7 @@
                 position: satelliteOfficeLocation,
                 map: map,
                 label: 'B', // Label for the marker
-                title: 'FAR EAST FUEL CORPORATION - MAIN OFFICE',
+                title: 'SATELLITE OFFICE',
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     fillColor: 'red',
@@ -85,7 +92,7 @@
     
             // Create an InfoWindow for the company marker
             const satelliteOfficeWindow = new google.maps.InfoWindow({
-                content: 'FAR EAST FUEL CORPORATION - SATELLITE OFFICE', // Content inside the InfoWindow
+                content: 'SATELLITE OFFICE', // Content inside the InfoWindow
             });
 
             companyWindow.open(map, companyMarker);
